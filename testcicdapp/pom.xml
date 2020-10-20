@@ -3,9 +3,6 @@
   <groupId>testcicdapp</groupId>
   <artifactId>testcicdapp</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <properties>
-        <my.custom.property>MAVEN</my.custom.property>
-    </properties>
   <packaging>war</packaging>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -33,9 +30,12 @@
       <generateGitPropertiesFile>false</generateGitPropertiesFile><!-- somehow necessary. otherwise the variables are not available in the pom -->
                     <injectAllReactorProjects>true</injectAllReactorProjects>
       <mainClass>test.Test</mainClass>
-                    <arguments>
-                        <argument>${my.custom.property}</argument>
-                    </arguments>
+                     <arguments>
+            <argument>-Djava.library.path=target/lib</argument>
+            <argument>-classpath</argument>
+            <classpath />
+            <argument>com.example.app.MainClass</argument>
+        </arguments>
     </configuration>
 </plugin>
     </plugins>

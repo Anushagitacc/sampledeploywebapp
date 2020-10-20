@@ -3,6 +3,9 @@
   <groupId>testcicdapp</groupId>
   <artifactId>testcicdapp</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+        <my.custom.property>MAVEN</my.custom.property>
+    </properties>
   <packaging>war</packaging>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -27,6 +30,12 @@
     <version>2.4</version>
     <configuration>
         <failOnMissingWebXml>false</failOnMissingWebXml>
+      <generateGitPropertiesFile>false</generateGitPropertiesFile><!-- somehow necessary. otherwise the variables are not available in the pom -->
+                    <injectAllReactorProjects>true</injectAllReactorProjects>
+      <mainClass>test.Test</mainClass>
+                    <arguments>
+                        <argument>${my.custom.property}</argument>
+                    </arguments>
     </configuration>
 </plugin>
     </plugins>
